@@ -1,0 +1,7 @@
+<div style="max-width:860px;margin:0 auto;background:#fff;">
+  <p style="font-size:18px;font-weight:800;color:#111;padding:20px 0 8px;margin:0;text-align:center;">4번 GIF 대체 Animated WebP 테스트</p>
+  <img src="https://raw.githubusercontent.com/sungeunstar/assets/main/kynam6/4_coupang_780.webp" alt="" style="display:block;width:100%;height:auto;">
+
+  <p style="font-size:18px;font-weight:800;color:#111;padding:28px 0 8px;margin:0;text-align:center;">11번 GIF 대체 Animated WebP 테스트</p>
+  <img src="https://raw.githubusercontent.com/sungeunstar/assets/main/kynam6/11_coupang_480.webp" alt="" style="display:block;width:100%;height:auto;">
+</div>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>쿠팡 GIF 테스트</title>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#f4f5f7;font-family:'Malgun Gothic',-apple-system,sans-serif;color:#1a1a1a;padding:24px}
+  h1{font-size:18px;margin:0 0 6px}
+  p{font-size:13px;color:#666;line-height:1.7}
+  textarea{width:100%;height:420px;margin-top:14px;font-family:Consolas,monospace;font-size:12px;line-height:1.55;border:1px solid #ddd;border-radius:8px;padding:12px}
+  button{border:0;background:#111;color:#fff;border-radius:8px;padding:12px 18px;font-size:14px;font-weight:700;cursor:pointer}
+</style>
+</head>
+<body>
+<h1>쿠팡 GIF 테스트 소스</h1>
+<p>기존 성공 GIF와 새 GIF를 같은 방식으로 넣은 테스트입니다. 쿠팡에 붙여넣은 뒤 기존 GIF만 움직이면 새 파일 처리 문제, 전부 PNG가 되면 쿠팡 정책/에디터 처리 문제입니다.</p>
+<button onclick="copySource()">테스트 HTML 복사</button>
+<textarea id="source" readonly>
+<div style="max-width:860px;margin:0 auto;background:#fff;">
+  <p style="font-size:18px;font-weight:800;color:#111;padding:20px 0 8px;margin:0;text-align:center;">기존 성공 GIF: kynam/5.gif</p>
+  <img src="https://raw.githubusercontent.com/sungeunstar/assets/main/kynam/5.gif" alt="" style="display:block;width:100%;height:auto;">
+
+  <p style="font-size:18px;font-weight:800;color:#111;padding:28px 0 8px;margin:0;text-align:center;">새 GIF 쿠팡용: kynam6/4_coupang.gif</p>
+  <img src="https://raw.githubusercontent.com/sungeunstar/assets/main/kynam6/4_coupang.gif" alt="" style="display:block;width:100%;height:auto;">
+
+  <p style="font-size:18px;font-weight:800;color:#111;padding:28px 0 8px;margin:0;text-align:center;">새 GIF 쿠팡용: kynam6/11_coupang.gif</p>
+  <img src="https://raw.githubusercontent.com/sungeunstar/assets/main/kynam6/11_coupang.gif" alt="" style="display:block;width:100%;height:auto;">
+</div>
+</textarea>
+<script>
+function copySource(){
+  var ta=document.getElementById('source');
+  ta.select();
+  document.execCommand('copy');
+}
+</script>
+</body>
+</html>

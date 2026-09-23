@@ -1,0 +1,7 @@
+<div style="max-width:860px;margin:0 auto;background:#fff;">
+  <p style="font-size:18px;font-weight:800;color:#111;padding:20px 0 8px;margin:0;text-align:center;">4번 GIF MP4 영상 태그 테스트</p>
+  <video src="https://raw.githubusercontent.com/sungeunstar/assets/main/kynam6/4_coupang_video.mp4" autoplay muted loop playsinline controls style="display:block;width:100%;height:auto;"></video>
+
+  <p style="font-size:18px;font-weight:800;color:#111;padding:28px 0 8px;margin:0;text-align:center;">11번 GIF MP4 영상 태그 테스트</p>
+  <video src="https://raw.githubusercontent.com/sungeunstar/assets/main/kynam6/11_coupang_video.mp4" autoplay muted loop playsinline controls style="display:block;width:100%;height:auto;"></video>
+</div>

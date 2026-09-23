@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>기남침향 - 배송/환불/FAQ</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      font-family: 'Pretendard', -apple-system, sans-serif;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 860px;
+      background: #fff;
+    }
+
+    /* ── 사용시 주의사항 / 부작용 ── */
+    .notice-section {
+      padding: 36px 48px;
+      border-bottom: 1px solid #ebebeb;
+    }
+
+    .notice-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .notice-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 15px;
+      background: #1a1a1a;
+      border-radius: 2px;
+    }
+
+    .notice-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .notice-list li {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.75;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .notice-list li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: #bbb;
+    }
+
+    /* ── 저작권 경고 ── */
+    .copyright-bar {
+      padding: 22px 48px;
+      background: #fff8f8;
+      border-top: 3px solid #d63031;
+      border-bottom: 3px solid #d63031;
+    }
+
+    .copyright-bar .warn-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #d63031;
+      margin-bottom: 8px;
+    }
+
+    .copyright-bar p {
+      font-size: 12px;
+      color: #888;
+      line-height: 1.8;
+    }
+
+    /* ── 배송 아이콘 3열 ── */
+    .shipping-top {
+      background: #1a1a1a;
+      display: flex;
+    }
+
+    .ship-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 32px 16px;
+      border-right: 1px solid #2e2e2e;
+    }
+
+    .ship-col:last-child { border-right: none; }
+
+    .ship-icon {
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .ship-label {
+      font-size: 12px;
+      color: #ccc;
+      text-align: center;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    /* ── 오늘 발송 배너 ── */
+    .today-banner {
+      background: #111;
+      padding: 30px 48px;
+      border-top: 1px solid #2e2e2e;
+      text-align: center;
+    }
+
+    .today-banner .headline {
+      font-size: 19px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+      letter-spacing: -0.3px;
+    }
+
+    .today-banner .headline em {
+      color: #f6a623;
+      font-style: normal;
+    }
+
+    .today-chips {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .today-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 6px;
+      padding: 10px 20px;
+    }
+
+    .today-chip .chip-label {
+      font-size: 11px;
+      color: #888;
+    }
+
+    .today-chip .chip-val {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* ── 프로세스 ── */
+    .process-bar {
+      background: #f7f7f7;
+      padding: 32px 48px;
+      border-bottom: 1px solid #ebebeb;
+    }
+
+    .process-bar .proc-title {
+      font-size: 15px;
+      font-weight: 700;
+      text-align: center;
+      color: #1a1a1a;
+      margin-bottom: 24px;
+    }
+
+    .proc-steps {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .proc-step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .proc-step .step-dot {
+      width: 50px;
+      height: 50px;
+      background: #1a1a1a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .proc-step .step-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .proc-arrow {
+      color: #ccc;
+      font-size: 20px;
+      flex-shrink: 0;
+      padding: 0 6px;
+      margin-bottom: 22px;
+    }
+
+    /* ── 정보 섹션 공통 ── */
+    .info-block {
+      padding: 32px 48px;
+      border-bottom: 1px solid #ebebeb;
+    }
+
+    .info-block-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a1a1a;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+      border-bottom: 2px solid #1a1a1a;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      row-gap: 10px;
+      column-gap: 16px;
+    }
+
+    .info-grid .k {
+      font-size: 13px;
+      color: #888;
+      font-weight: 600;
+      padding-top: 1px;
+    }
+
+    .info-grid .v {
+      font-size: 13px;
+      color: #333;
+      line-height: 1.75;
+    }
+
+    /* ── 고객센터 ── */
+    .contact-bar {
+      background: #1a1a1a;
+      padding: 36px 48px;
+      text-align: center;
+    }
+
+    .contact-bar .c-label {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    .contact-bar .c-phone {
+      font-size: 30px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -1px;
+    }
+
+    .contact-bar .c-hours {
+      font-size: 12px;
+      color: #555;
+      margin-top: 6px;
+    }
+
+    /* ── FAQ ── */
+    .faq-block {
+      padding: 40px 48px 48px;
+    }
+
+    .faq-block .faq-heading {
+      font-size: 17px;
+      font-weight: 800;
+      text-align: center;
+      color: #1a1a1a;
+      margin-bottom: 28px;
+      letter-spacing: -0.3px;
+    }
+
+    .faq-item {
+      padding: 20px 0;
+      border-top: 1px solid #ebebeb;
+    }
+
+    .faq-item:last-child { border-bottom: 1px solid #ebebeb; }
+
+    .faq-q {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      align-items: flex-start;
+    }
+
+    .faq-q .qbadge {
+      width: 22px;
+      height: 22px;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .faq-q .qtext {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1.5;
+    }
+
+    .faq-a {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.85;
+      padding-left: 32px;
+    }
+
+    /* ── 반응형 ── */
+    @media (max-width: 600px) {
+      .notice-section, .copyright-bar,
+      .today-banner, .process-bar,
+      .info-block, .contact-bar, .faq-block {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .today-chips { flex-direction: column; align-items: center; }
+      .contact-bar .c-phone { font-size: 24px; }
+
+      .proc-step .step-dot { width: 40px; height: 40px; font-size: 16px; }
+      .proc-arrow { font-size: 16px; padding: 0 2px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- 사용시 주의사항 -->
+    <div class="notice-section">
+      <div class="notice-title">사용시 주의사항</div>
+      <ul class="notice-list">
+        <li>본 제품은 이미지와 다소 차이가 있을 수 있으며, 제품들은 불량이 없습니다.</li>
+        <li>제품을 변경, 반환, 누수 등의 이유로 장기간 방치한 경우에는 드라이한 곳에 사용하기 마세요.</li>
+        <li>본 제품은 직사광선을 피하고 습기가 없는 서늘한 곳에 보관하기 바랍니다.</li>
+        <li>어린이 닿지 않는 곳에 보관 바랍니다.</li>
+      </ul>
+    </div>
+
+    <!-- 부작용 -->
+    <div class="notice-section">
+      <div class="notice-title">부작용</div>
+      <ul class="notice-list">
+        <li>본 제품은 공정거래위 관련 규정에 맞는 건강기능식품 관련법에 따라 시판하기 위한 제품입니다.</li>
+        <li>사용 중 하나 이상의 다른 약물을 사용하실 경우 부작용이 발생 가능하므로 의사나 약사와 상담을 적극 권장합니다.</li>
+        <li>개인에 따라 알레르기 반응이 있을 수 있으니 해당하시는 분은 사용 전 의사/약사와 상담할 것을 권장합니다.</li>
+        <li>지속적으로 복용하거나 두 배로 복용하는 것은 삼가합니다.</li>
+        <li>포장: 30알 × 3병 구성, 한 박스 기준 총 90알.</li>
+        <li>사용기간: 제조일로부터 36개월</li>
+      </ul>
+    </div>
+
+    <!-- 저작권 -->
+    <div class="copyright-bar">
+      <div class="warn-title">🚫 상세페이지 무단도용 금지</div>
+      <p>(주)라이브커머스마케팅은 저작권법에 의해 본 이미지들의 무단복제 및 도용을 금지합니다.<br>저작권자의 허가 없이 사용할 경우 법적 조치를 받을 수 있습니다.</p>
+    </div>
+
+    <!-- 배송 아이콘 -->
+    <div class="shipping-top">
+      <div class="ship-col">
+        <div class="ship-icon">📦</div>
+        <div class="ship-label">아름다운드<br>스폰지박스</div>
+      </div>
+      <div class="ship-col">
+        <div class="ship-icon">🚚</div>
+        <div class="ship-label">전국<br>배송가능</div>
+      </div>
+      <div class="ship-col">
+        <div class="ship-icon">⚡</div>
+        <div class="ship-label">오전 11시 이전<br>주문시 당일배송</div>
+      </div>
+    </div>
+
+    <!-- 오늘 발송 -->
+    <div class="today-banner">
+      <div class="headline">오늘 주문 하면 <em>오늘 발송</em></div>
+      <div class="today-chips">
+        <div class="today-chip">
+          <span class="chip-label">주문마감시간</span>
+          <span class="chip-val">오후 1시까지</span>
+        </div>
+        <div class="today-chip">
+          <span class="chip-label">배송택배</span>
+          <span class="chip-val">우체국</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 프로세스 -->
+    <div class="process-bar">
+      <div class="proc-title">이렇게 보내드립니다</div>
+      <div class="proc-steps">
+        <div class="proc-step">
+          <div class="step-dot">📋</div>
+          <div class="step-name">주문완료</div>
+        </div>
+        <div class="proc-arrow">›</div>
+        <div class="proc-step">
+          <div class="step-dot">🔍</div>
+          <div class="step-name">제품준비</div>
+        </div>
+        <div class="proc-arrow">›</div>
+        <div class="proc-step">
+          <div class="step-dot">📦</div>
+          <div class="step-name">배송접수</div>
+        </div>
+        <div class="proc-arrow">›</div>
+        <div class="proc-step">
+          <div class="step-dot">🏠</div>
+          <div class="step-name">배송완료</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 환불/반품 안내 -->
+    <div class="info-block">
+      <div class="info-block-title">환불 / 반품 / 안내</div>
+      <ul class="notice-list">
+        <li>교환, 반품 시 반드시 사전에 고객센터로 전화하여 접수를 한 뒤 가능합니다.</li>
+      </ul>
+    </div>
+
+    <!-- 배송정보 -->
+    <div class="info-block">
+      <div class="info-block-title">배송정보</div>
+      <div class="info-grid">
+        <span class="k">배송방법</span>
+        <span class="v">우체국택배로 안전하게 발송됩니다.</span>
+        <span class="k">배송비</span>
+        <span class="v">무료 (반품 시 왕복배송비 10,000원 고객부담)</span>
+        <span class="k">배송기간</span>
+        <span class="v">주문일 다음날 기준 1~3영업일</span>
+        <span class="k">배송지역</span>
+        <span class="v">전국 / 도서산간 가능</span>
+      </div>
+    </div>
+
+    <!-- 교환 및 반품 -->
+    <div class="info-block">
+      <div class="info-block-title">교환 및 반품</div>
+      <div class="info-grid">
+        <span class="k">가능한 경우</span>
+        <span class="v">제품불량, 오배송, 재고부족으로 인한 교환 및 환불</span>
+        <span class="k">단순변심</span>
+        <span class="v">미개봉 상태에 한해 가능 (왕복배송비 고객부담)</span>
+        <span class="k">불가한 경우</span>
+        <span class="v">개봉된 식품, 사용 흔적이 있는 제품</span>
+        <span class="k">처리기간</span>
+        <span class="v">접수 후 영업일 기준 3~5일 이내 처리</span>
+      </div>
+    </div>
+
+    <!-- 고객센터 -->
+    <div class="contact-bar">
+      <div class="c-label">고객센터</div>
+      <div class="c-phone">010-2268-5865</div>
+      <div class="c-hours">월 – 일 연중무휴</div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-block">
+      <div class="faq-heading">자주 묻는 질문</div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="qbadge">Q</span>
+          <span class="qtext">베트남산 침향이 왜 좋은가요?</span>
+        </div>
+        <div class="faq-a">베트남은 세계 최고 품질의 침향 생산지입니다. 고온다습한 기후와 비옥한 토양이 기남나무의 고품질 수지 형성에 최적의 환경을 제공합니다. 저희는 베트남 현지에서 직접 재배·수확하여 중간 유통 없이 최상의 품질을 유지합니다.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="qbadge">Q</span>
+          <span class="qtext">배송기간은 얼마나 걸리나요?</span>
+        </div>
+        <div class="faq-a">주문일 다음날 기준 1~3 영업일 내 수령 가능합니다. 오전 11시 이전 주문 시 당일 발송되며, 오후 1시 이전 주문 시 당일 출고됩니다.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="qbadge">Q</span>
+          <span class="qtext">환불 후 상품 재구매가 가능한가요?</span>
+        </div>
+        <div class="faq-a">네, 가능합니다. 환불 처리 완료 후 재주문하시면 됩니다. 단, 개봉된 제품의 경우 단순 변심에 의한 환불은 어려울 수 있습니다. 자세한 사항은 고객센터로 문의해 주세요.</div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

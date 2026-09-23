@@ -1,0 +1,10 @@
+<div style="max-width:860px;margin:0 auto;background:#fff;">
+  <p style="font-size:18px;font-weight:800;color:#111;padding:20px 0 8px;margin:0;text-align:center;">기존 성공 GIF: kynam/5.gif</p>
+  <img src="https://raw.githubusercontent.com/sungeunstar/assets/main/kynam/5.gif" alt="" style="display:block;width:100%;height:auto;">
+
+  <p style="font-size:18px;font-weight:800;color:#111;padding:28px 0 8px;margin:0;text-align:center;">새 GIF 쿠팡용: kynam6/4_coupang.gif</p>
+  <img src="https://raw.githubusercontent.com/sungeunstar/assets/main/kynam6/4_coupang.gif" alt="" style="display:block;width:100%;height:auto;">
+
+  <p style="font-size:18px;font-weight:800;color:#111;padding:28px 0 8px;margin:0;text-align:center;">새 GIF 쿠팡용: kynam6/11_coupang.gif</p>
+  <img src="https://raw.githubusercontent.com/sungeunstar/assets/main/kynam6/11_coupang.gif" alt="" style="display:block;width:100%;height:auto;">
+</div>
